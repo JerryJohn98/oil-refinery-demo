@@ -25,7 +25,7 @@
 
       <article class="kpi-card ra-card">
         <div class="kpi-label ra-label">Predicted Oil Uplift</div>
-        <div class="kpi-value ra-metric">+{{ kpiYield }} bopd</div>
+        <div class="kpi-value ra-metric">+{{ kpiUplift }} bopd</div>
       </article>
 
       <article class="kpi-card ra-card">
@@ -49,9 +49,7 @@
 
           <div class="panel-header">
             <h2 class="param-name">{{ param.name }}</h2>
-            <span class="last-refresh">
-              Last refreshed {{ param.lastUpdated }}
-            </span>
+            <span class="last-refresh">Last refreshed {{ param.lastUpdated }}</span>
           </div>
 
           <div class="gauge-track">
@@ -69,12 +67,8 @@
           </div>
 
           <div class="gauge-values">
-            <span class="actual-label">
-              {{ param.current | number:'1.0-2' }}
-            </span>
-            <span class="units-label">
-              Actual {{ param.unit }}
-            </span>
+            <span class="actual-label">{{ param.current | number:'1.0-2' }}</span>
+            <span class="units-label">Actual {{ param.unit }}</span>
           </div>
 
         </div>
@@ -96,24 +90,18 @@
           <div class="rec-values">
             <div>
               <div class="metric-label">Injection Setpoint Lower</div>
-              <div class="metric">
-                {{ param.recommendedLower | number:'1.0-2' }}
-              </div>
+              <div class="metric">{{ param.recommendedLower | number:'1.0-2' }}</div>
             </div>
-
             <div>
               <div class="metric-label">Injection Setpoint Upper</div>
-              <div class="metric">
-                {{ param.recommendedUpper | number:'1.0-2' }}
-              </div>
+              <div class="metric">{{ param.recommendedUpper | number:'1.0-2' }}</div>
             </div>
           </div>
 
-          <!-- DELTA (FIXED) -->
           <div class="delta-row">
             <span class="delta-label">Delta to target</span>
             <span class="delta-value" [ngClass]="param.deltaClass">
-              {{ param.deltaText }}
+              {{ param.deltaText }} psi
             </span>
           </div>
 
@@ -121,9 +109,7 @@
           <div class="confidence-wrap">
             <div class="confidence-head">
               <span>Confidence Score</span>
-              <span class="confidence-score">
-                {{ param.confidence }}%
-              </span>
+              <span class="confidence-score">{{ param.confidence }}%</span>
             </div>
 
             <div class="confidence-bar ra-progress-track">
@@ -137,8 +123,7 @@
           <div class="sparkline-wrap">
             <div class="sparkline-head">
               <span>Actual Response Trend</span>
-              <span class="trend-tag"
-                    [ngClass]="param.trendClass">
+              <span class="trend-tag" [ngClass]="param.trendClass">
                 {{ param.trendLabel }}
               </span>
             </div>
