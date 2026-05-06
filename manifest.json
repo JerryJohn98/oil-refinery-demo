@@ -1,0 +1,9 @@
+{
+  "plugin_name": "diageo",
+  "plugin_type": "microservice",
+  "vcs-url": "https://gitlab-pm.knowledgelens.com/KnowledgeLens/Products/iLens-2.0/customer-implementations/Diageo/ppm-custom-apis.git",
+  "branch": "develop",
+  "environment_variables": {
+  },
+  "version": "1.0"
+}

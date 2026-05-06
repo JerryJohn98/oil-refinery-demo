@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oil and Gas Water Injection Optimization</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+
+<body class="ra-global ra-fl-light ra-compact">
+  <div class="app-shell ra-app-shell">
+    <main class="main-content ra-page">
+      <header class="product-header ra-product-header" aria-label="Application Header">
+        <div class="product-brand">
+          <h1>Water Injection Optimizer</h1>
+          <p>Control view for pressure and rate setpoint recommendations</p>
+        </div>
+        <div class="header-meta ra-header-meta">
+          <span class="status-chip status-live ra-badge ra-badge--success">Live Optimization</span>
+          <span class="status-chip ra-badge">Model v1.0</span>
+        </div>
+      </header>
+
+      <section class="kpi-strip ra-kpi-strip" aria-label="Optimization KPIs">
+        <article class="kpi-card ra-card">
+          <div class="kpi-label ra-label">Injection Efficiency</div>
+          <div id="kpiEfficiency" class="kpi-value ra-metric">--%</div>
+        </article>
+        <article class="kpi-card ra-card">
+          <div class="kpi-label ra-label">Predicted Oil Uplift</div>
+          <div id="kpiUplift" class="kpi-value ra-metric">-- bopd</div>
+        </article>
+        <article class="kpi-card ra-card">
+          <div class="kpi-label ra-label">Overpressure Risk</div>
+          <div id="kpiRisk" class="kpi-value ra-metric">--</div>
+        </article>
+        <article class="kpi-card ra-card">
+          <div class="kpi-label ra-label">Energy per Injected Barrel</div>
+          <div id="kpiEnergy" class="kpi-value ra-metric">-- kWh/bbl</div>
+        </article>
+      </section>
+
+      <section id="dashboard" class="dashboard-grid ra-dashboard-grid"></section>
+    </main>
+  </div>
+
+  <template id="parameterTemplate">
+    <article class="param-row ra-grid-row">
+      <div class="gauge-panel ra-card">
+        <div class="panel-header">
+          <h2 class="param-name"></h2>
+          <span class="last-refresh"></span>
+        </div>
+        <div class="gauge-track">
+          <div class="range low"></div>
+          <div class="range optimal"></div>
+          <div class="range high"></div>
+          <div class="needle"></div>
+        </div>
+        <div class="tick-row"></div>
+        <div class="gauge-values">
+          <span class="actual-label"></span>
+          <span class="units-label"></span>
+        </div>
+      </div>
+
+      <div class="recommendation-panel ra-card">
+        <div class="rec-head">
+          <h3 class="rec-title"></h3>
+          <span class="constraint-badge ra-badge"></span>
+        </div>
+        <div class="rec-values">
+          <div>
+            <div class="metric-label">Injection Setpoint Lower</div>
+            <div class="metric rec-lower"></div>
+          </div>
+          <div>
+            <div class="metric-label">Injection Setpoint Upper</div>
+            <div class="metric rec-upper"></div>
+          </div>
+        </div>
+        <div class="delta-row">
+          <span class="delta-label">Delta to target</span>
+          <span class="delta-value"></span>
+        </div>
+
+        <div class="confidence-wrap">
+          <div class="confidence-head">
+            <span>Confidence Score</span>
+            <span class="confidence-score"></span>
+          </div>
+          <div class="confidence-bar ra-progress-track">
+            <div class="confidence-fill ra-progress-fill"></div>
+          </div>
+        </div>
+
+        <div class="sparkline-wrap">
+          <div class="sparkline-head">
+            <span>Actual Response Trend</span>
+            <span class="trend-tag"></span>
+          </div>
+          <svg class="sparkline" viewBox="0 0 280 72" preserveAspectRatio="none">
+            <path class="sparkline-band"></path>
+            <path class="sparkline-line"></path>
+          </svg>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <script src="/static/app.js"></script>
+</body>
+
+</html>

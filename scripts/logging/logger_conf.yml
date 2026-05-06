@@ -1,0 +1,12 @@
+---
+logger:
+  name: diageo_services
+  level: INFO
+  handlers:
+    - type: RotatingFileHandler
+      file_path: logs/
+      max_bytes: 100000000
+      back_up_count: 5
+
+    - type: StreamHandler
+      name: diageo_services

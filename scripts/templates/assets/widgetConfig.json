@@ -1,0 +1,9 @@
+{
+    "selector": "app-candle",
+    "settings": {
+        "config_tabs": {
+            "general": true,
+            "chartProp": true
+        }
+    }
+}
