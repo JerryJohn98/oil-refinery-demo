@@ -1,13 +1,14 @@
-<!-- app.component.html -->
 <div class="app-shell">
   <main class="main-content">
+
+    <!-- HEADER -->
     <header class="page-header">
       <div>
         <h1>Oil and Gas Water Injection Optimization</h1>
-        <p>Interactive mockup with confidence scoring and actual response trend signals.</p>
       </div>
     </header>
 
+    <!-- KPI -->
     <section class="kpi-strip">
       <article class="kpi-card">
         <div class="kpi-label">Injection Efficiency</div>
@@ -16,7 +17,7 @@
 
       <article class="kpi-card">
         <div class="kpi-label">Predicted Oil Uplift</div>
-        <div class="kpi-value">{{ kpiUplift }} bopd</div>
+        <div class="kpi-value">+{{ kpiUplift }} bopd</div>
       </article>
 
       <article class="kpi-card">
@@ -30,19 +31,114 @@
       </article>
     </section>
 
+    <!-- DASHBOARD -->
     <section class="dashboard-grid">
+
       <div *ngFor="let param of state" class="param-row">
-        <!-- Simplified rendering -->
+
+        <!-- LEFT: GAUGE -->
         <div class="gauge-panel">
-          <h2>{{ param.name }}</h2>
-          <div>{{ param.current }}</div>
+
+          <div class="panel-header">
+            <h2 class="param-name">{{ param.name }}</h2>
+            <span class="last-refresh">
+              {{ param.lastUpdated || 'Live' }}
+            </span>
+          </div>
+
+          <!-- Gauge -->
+          <div class="gauge-track">
+            <div class="range low"></div>
+            <div class="range optimal"></div>
+            <div class="range high"></div>
+
+            <!-- NEEDLE -->
+            <div class="needle"
+                 [style.left.%]="((param.current - param.min) / (param.max - param.min)) * 100">
+            </div>
+          </div>
+
+          <!-- TICKS -->
+          <div class="tick-row">
+            <span *ngFor="let tick of param.ticks">{{ tick }}</span>
+          </div>
+
+          <!-- VALUE -->
+          <div class="gauge-values">
+            <span class="actual-label">{{ param.current | number:'1.0-2' }}</span>
+            <span class="units-label">Actual {{ param.unit }}</span>
+          </div>
         </div>
 
+        <!-- RIGHT: RECOMMENDATION -->
         <div class="recommendation-panel">
-          <div>{{ param.recommendedLower }} - {{ param.recommendedUpper }}</div>
-          <div>Confidence: {{ param.confidence }}%</div>
+
+          <div class="rec-head">
+            <h3 class="rec-title">
+              AI Setpoint Recommendation: {{ param.name }}
+            </h3>
+
+            <span class="constraint-badge">
+              Within constraints
+            </span>
+          </div>
+
+          <!-- RANGE -->
+          <div class="rec-values">
+            <div>
+              <div class="metric-label">Lower</div>
+              <div class="metric">
+                {{ param.recommendedLower | number:'1.0-2' }}
+              </div>
+            </div>
+
+            <div>
+              <div class="metric-label">Upper</div>
+              <div class="metric">
+                {{ param.recommendedUpper | number:'1.0-2' }}
+              </div>
+            </div>
+          </div>
+
+          <!-- DELTA -->
+          <div class="delta-row">
+            <span class="delta-label">Delta</span>
+            <span class="delta-value">
+              {{ (param.recommendedLower + param.recommendedUpper)/2 - param.current | number:'1.0-2' }}
+            </span>
+          </div>
+
+          <!-- CONFIDENCE -->
+          <div class="confidence-wrap">
+            <div class="confidence-head">
+              <span>Confidence</span>
+              <span class="confidence-score">{{ param.confidence }}%</span>
+            </div>
+
+            <div class="confidence-bar">
+              <div class="confidence-fill"
+                   [style.width.%]="param.confidence">
+              </div>
+            </div>
+          </div>
+
+          <!-- SPARKLINE -->
+          <div class="sparkline-wrap">
+            <div class="sparkline-head">
+              <span>Trend</span>
+            </div>
+
+            <svg class="sparkline" viewBox="0 0 280 72">
+              <path class="sparkline-band" [attr.d]="param.bandPath"></path>
+              <path class="sparkline-line" [attr.d]="param.linePath"></path>
+            </svg>
+          </div>
+
         </div>
+
       </div>
+
     </section>
+
   </main>
 </div>
