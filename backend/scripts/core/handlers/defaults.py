@@ -24,7 +24,7 @@ class DefaultHandler:
                 elif each_file.endswith(".css"):
                     response.styles.append(path)
                 elif each_file == "assets":
-                    response.assetPath = f"{Service.PROXY}/assets"
+                    response.assetPath = "/assets"
 
             return DefaultSuccessResponse(
                 message="Styles loaded successfully", data=response, status="success"
