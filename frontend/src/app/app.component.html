@@ -86,14 +86,14 @@
           <!-- RANGE -->
           <div class="rec-values">
             <div>
-              <div class="metric-label">Lower</div>
+              <div class="metric-label">Injection Setpoint Lower</div>
               <div class="metric">
                 {{ param.recommendedLower | number:'1.0-2' }}
               </div>
             </div>
 
             <div>
-              <div class="metric-label">Upper</div>
+              <div class="metric-label">Injection Setpoint Upper</div>
               <div class="metric">
                 {{ param.recommendedUpper | number:'1.0-2' }}
               </div>
@@ -102,7 +102,7 @@
 
           <!-- DELTA -->
           <div class="delta-row">
-            <span class="delta-label">Delta</span>
+            <span class="delta-label">Delta to target</span>
             <span class="delta-value">
               {{ (param.recommendedLower + param.recommendedUpper)/2 - param.current | number:'1.0-2' }}
             </span>
@@ -111,7 +111,7 @@
           <!-- CONFIDENCE -->
           <div class="confidence-wrap">
             <div class="confidence-head">
-              <span>Confidence</span>
+              <span>Confidence Score</span>
               <span class="confidence-score">{{ param.confidence }}%</span>
             </div>
 
@@ -125,7 +125,7 @@
           <!-- SPARKLINE -->
           <div class="sparkline-wrap">
             <div class="sparkline-head">
-              <span>Trend</span>
+              <span>Actual Response Trend</span>
             </div>
 
             <svg class="sparkline" viewBox="0 0 280 72">

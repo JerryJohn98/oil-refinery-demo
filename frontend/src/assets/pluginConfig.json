@@ -1,7 +1,7 @@
 {
-  "selector": "calculation-cycle-plugin",
+  "selector": "oil-refinery",
   "filterInfo": {
-    "selector": "calculation-cycle-plugin",
+    "selector": "oil-refinery",
     "isPlugin": true,
     "customize": false
   }

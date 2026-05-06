@@ -25,12 +25,12 @@ import { DatePipe } from '@angular/common';
   ],
   exports: [OwlDateTimeModule, OwlNativeDateTimeModule],
   providers: [DatePipe],
-  bootstrap: [AppComponent],
+  bootstrap: [],
 })
 export class AppModule {
   constructor(public injector: Injector) {
-    if (!customElements.get('calculation-cycle-plugin')) {
-      customElements.define('calculation-cycle-plugin', createCustomElement(AppComponent, { injector: this.injector }));
+    if (!customElements.get('oil-refinery')) {
+      customElements.define('oil-refinery', createCustomElement(AppComponent, { injector: this.injector }));
     }
   }
 

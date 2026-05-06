@@ -1,5 +1,5 @@
 {
-  "plugin_name": "Calculation Cycle",
+  "plugin_name": "oil-refinery",
   "plugin_type": "widget",
   "vcs-url": "https://gitlab-pm.knowledgelens.com/KnowledgeLens/Products/iLens-2.0/core/plugins/customer-specific-plugins/pepsico-paperless-dashboard/pepsico-paperless-trend-dashboard/pepsico-paperless-trend-dashboard/-/tree/develop",
   "branch": "develop",
