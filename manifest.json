@@ -1,0 +1,10 @@
+{
+  "plugin_name": "Calculation Cycle",
+  "plugin_type": "widget",
+  "vcs-url": "https://gitlab-pm.knowledgelens.com/KnowledgeLens/Products/iLens-2.0/core/plugins/customer-specific-plugins/pepsico-paperless-dashboard/pepsico-paperless-trend-dashboard/pepsico-paperless-trend-dashboard/-/tree/develop",
+  "branch": "develop",
+  "frontend_base_image": "node:14.21.3",
+  "backend_base_image": "python:3.10.10-slim",
+  "environment_variables": {},
+  "version": "11.0"
+}

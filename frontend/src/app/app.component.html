@@ -1,0 +1,48 @@
+<!-- app.component.html -->
+<div class="app-shell">
+  <main class="main-content">
+    <header class="page-header">
+      <div>
+        <h1>Oil and Gas Water Injection Optimization</h1>
+        <p>Interactive mockup with confidence scoring and actual response trend signals.</p>
+      </div>
+    </header>
+
+    <section class="kpi-strip">
+      <article class="kpi-card">
+        <div class="kpi-label">Injection Efficiency</div>
+        <div class="kpi-value">{{ kpiEfficiency }}%</div>
+      </article>
+
+      <article class="kpi-card">
+        <div class="kpi-label">Predicted Oil Uplift</div>
+        <div class="kpi-value">{{ kpiUplift }} bopd</div>
+      </article>
+
+      <article class="kpi-card">
+        <div class="kpi-label">Overpressure Risk</div>
+        <div class="kpi-value">{{ kpiRisk }}%</div>
+      </article>
+
+      <article class="kpi-card">
+        <div class="kpi-label">Energy per Injected Barrel</div>
+        <div class="kpi-value">{{ kpiEnergy }} kWh/bbl</div>
+      </article>
+    </section>
+
+    <section class="dashboard-grid">
+      <div *ngFor="let param of state" class="param-row">
+        <!-- Simplified rendering -->
+        <div class="gauge-panel">
+          <h2>{{ param.name }}</h2>
+          <div>{{ param.current }}</div>
+        </div>
+
+        <div class="recommendation-panel">
+          <div>{{ param.recommendedLower }} - {{ param.recommendedUpper }}</div>
+          <div>Confidence: {{ param.confidence }}%</div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

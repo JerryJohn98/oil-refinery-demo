@@ -1,0 +1,59 @@
+{
+    "status": "success",
+    "message": "Device table headers fetched successfully",
+    "data": {
+        "enableActions": false,
+        "enableGlobalSearch": true,
+        "externalActions": [],
+        "height": "calc(100vh - 406px)",
+        "saveTablePreference": true,
+        "actions": [],
+        "columnDefs": [
+            {
+                "headerName": "Event Name",
+                "field": "event_name",
+                "hide": false,
+                "minWidth": 120,
+                "flex": 1
+            },
+            {
+                "headerName": "Event Class",
+                "field": "event_class",
+                "key": "recipeid",
+                "flex": 1,
+                "hide": false
+            },
+            {
+                "headerName": "Start Time",
+                "field": "start_time",
+                "hide": false,
+                "minWidth": 120,
+                "flex": 1
+            },
+            {
+                "headerName": "End Time",
+                "field": "end_time",
+                "hide": false,
+                "flex": 1
+            },
+            {
+                "headerName": "Duration",
+                "field": "duration",
+                "hide": false,
+                "flex": 1
+            },
+            {
+                "headerName": "Event Category",
+                "field": "event_category",
+                "hide": false,
+                "flex": 1
+            },
+            {
+                "headerName": "Record Type",
+                "field": "record_type",
+                "hide": false,
+                "flex": 1
+            }
+        ]
+    }
+}

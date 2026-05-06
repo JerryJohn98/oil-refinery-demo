@@ -1,0 +1,25 @@
+FROM node:18.16 AS frontend
+WORKDIR /app
+COPY frontend/package.json .
+RUN npm install
+COPY frontend/ .
+RUN node "node_modules/@angular/cli/bin/ng" build --configuration production --output-path build
+
+
+FROM python:3.10.10-slim
+WORKDIR /app
+COPY backend/requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
+COPY backend/ /app/
+RUN rm -rf scripts/templates
+COPY --from=frontend /app/build/ /app/scripts/templates/
+CMD ["python", "app.py"]
+
+
+FROM python:3.9.13-alpine3.16 as mkdocs_builder
+WORKDIR /app
+COPY user_manual/requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
+COPY user_manual/ /app/
+RUN mkdocs build --site-dir mkdocs_build
+COPY --from=mkdocs_builder /app/site/ /app/scripts/templates/

@@ -1,0 +1,12 @@
+{
+  "dropdown_values": [
+    {
+      "label": "Post Changeover",
+      "value": "post_changeover"
+    },
+    {
+      "label": "Post Maintenance",
+      "value": "post_maintenance"
+    }
+  ]
+}

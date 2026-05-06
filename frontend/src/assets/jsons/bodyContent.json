@@ -1,0 +1,110 @@
+{
+    "status": "success",
+    "message": "Software details fetched successfully!",
+    "data": {
+        "bodyContent": [
+            {
+                "event_name": "Filler Stop",
+                "event_class": "Stop",
+                "start_time": "12/30/2023 19:29:59",
+                "end_time": "12/31/2023 19:29:59",
+                "duration": "24 hours",
+                "event_category": "Utility Outrage",
+                "record_type": "Manual"
+            },
+            {
+                "event_name": "Filler Stop",
+                "event_class": "Stop",
+                "start_time": "12/30/2023 19:29:59",
+                "end_time": "12/31/2023 19:29:59",
+                "duration": "24 hours",
+                "event_category": "Utility Outrage",
+                "record_type": "Manual"
+            },
+            {
+                "event_name": "Filler Stop",
+                "event_class": "Stop",
+                "start_time": "12/30/2023 19:29:59",
+                "end_time": "12/31/2023 19:29:59",
+                "duration": "24 hours",
+                "event_category": "Utility Outrage",
+                "record_type": "Manual"
+            },
+            {
+                "event_name": "Filler Stop",
+                "event_class": "Stop",
+                "start_time": "12/30/2023 19:29:59",
+                "end_time": "12/31/2023 19:29:59",
+                "duration": "24 hours",
+                "event_category": "Utility Outrage",
+                "record_type": "Manual"
+            },
+            {
+                "event_name": "Filler Stop",
+                "event_class": "Stop",
+                "start_time": "12/30/2023 19:29:59",
+                "end_time": "12/31/2023 19:29:59",
+                "duration": "24 hours",
+                "event_category": "Utility Outrage",
+                "record_type": "Manual"
+            },
+            {
+                "event_name": "Filler Stop",
+                "event_class": "Stop",
+                "start_time": "12/30/2023 19:29:59",
+                "end_time": "12/31/2023 19:29:59",
+                "duration": "24 hours",
+                "event_category": "Utility Outrage",
+                "record_type": "Manual"
+            },
+            {
+                "event_name": "Filler Stop",
+                "event_class": "Stop",
+                "start_time": "12/30/2023 19:29:59",
+                "end_time": "12/31/2023 19:29:59",
+                "duration": "24 hours",
+                "event_category": "Utility Outrage",
+                "record_type": "Manual"
+            },
+            {
+                "event_name": "Filler Stop",
+                "event_class": "Stop",
+                "start_time": "12/30/2023 19:29:59",
+                "end_time": "12/31/2023 19:29:59",
+                "duration": "24 hours",
+                "event_category": "Utility Outrage",
+                "record_type": "Manual"
+            },
+            {
+                "event_name": "Filler Stop",
+                "event_class": "Stop",
+                "start_time": "12/30/2023 19:29:59",
+                "end_time": "12/31/2023 19:29:59",
+                "duration": "24 hours",
+                "event_category": "Utility Outrage",
+                "record_type": "Manual"
+            },
+            {
+                "event_name": "Filler Stop",
+                "event_class": "Stop",
+                "start_time": "12/30/2023 19:29:59",
+                "end_time": "12/31/2023 19:29:59",
+                "duration": "24 hours",
+                "event_category": "Utility Outrage",
+                "record_type": "Manual"
+            },
+            {
+                "event_name": "Filler Stop",
+                "event_class": "Stop",
+                "start_time": "12/30/2023 19:29:59",
+                "end_time": "12/31/2023 19:29:59",
+                "duration": "24 hours",
+                "event_category": "Utility Outrage",
+                "record_type": "Manual"
+            }            
+            
+        ],
+        "total_no": 5,
+        "endOfRecords": true
+    }
+}
