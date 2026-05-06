@@ -1,112 +1,159 @@
-<div class="app-shell">
-<main class="main-content">
- 
+<div class="app-shell ra-app-shell">
+  <main class="main-content ra-page">
+
     <!-- HEADER -->
-<header class="header">
-<div>
-<h1>Water Injection Optimizer</h1>
-<p>Control view for pressure and rate setpoint recommendations</p>
-</div>
-<div class="header-badges">
-<span class="badge live">Live Optimization</span>
-<span class="badge">Model v1.0</span>
-</div>
-</header>
- 
-    <!-- KPI -->
-<section class="kpi-row">
-<div class="kpi">{{ kpiEfficiency }}%</div>
-<div class="kpi">+{{ kpiYield }} bopd</div>
-<div class="kpi">{{ kpiRisk }}%</div>
-<div class="kpi">{{ kpiEnergy }} kWh/bbl</div>
-</section>
- 
-    <!-- MAIN CARDS -->
-<div class="cards">
- 
-      <div class="row" *ngFor="let param of state">
- 
-        <!-- LEFT CARD -->
-<div class="card gauge">
- 
-          <div class="card-header">
-<span>{{ param.name }}</span>
-<span class="time">Last refreshed {{ param.lastUpdated }}</span>
-</div>
- 
-          <!-- Gauge -->
-<div class="gauge-bar" style="position:relative;">
-<div class="low"></div>
-<div class="optimal"></div>
-<div class="high"></div>
-<div class="needle"
-
-                 [style.left.%]="((param.current - param.min)/(param.max-param.min))*100">
-</div>
-</div>
- 
-          <div class="ticks">
-<span *ngFor="let t of param.ticks">{{ t }}</span>
-</div>
- 
-          <div class="value">
-
-            {{ param.current | number:'1.0-2' }}
-<span>Actual {{ param.unit }}</span>
-</div>
- 
-        </div>
- 
-        <!-- RIGHT CARD -->
-<div class="card recommendation">
- 
-          <div class="rec-header">
-<h3>Setpoint Recommendation: {{ param.name }}</h3>
-<span class="badge success">Within constraints</span>
-</div>
- 
-          <div class="rec-values">
-<div>
-<label>Lower</label>
-<h2>{{ param.recommendedLower | number:'1.0-2' }}</h2>
-</div>
-<div>
-<label>Upper</label>
-<h2>{{ param.recommendedUpper | number:'1.0-2' }}</h2>
-</div>
-</div>
- 
-          <div class="delta">
-<span>Delta to target</span>
-<span>
-
-              {{ ((param.recommendedLower+param.recommendedUpper)/2 - param.current) | number:'1.0-2' }}
-</span>
-</div>
- 
-          <!-- Confidence -->
-<div class="confidence">
-<div class="row-head">
-<span>Confidence Score</span>
-<span>{{ param.confidence }}%</span>
-</div>
-<div class="bar">
-<div class="fill" [style.width.%]="param.confidence"></div>
-</div>
-</div>
- 
-          <!-- Sparkline -->
-<svg viewBox="0 0 280 72">
-<path class="band" [attr.d]="param.bandPath"></path>
-<path class="line" [attr.d]="param.linePath"></path>
-</svg>
- 
-        </div>
- 
+    <header class="product-header ra-product-header">
+      <div class="product-brand">
+        <h1>Water Injection Optimizer</h1>
+        <p>Control view for pressure and rate setpoint recommendations</p>
       </div>
- 
-    </div>
- 
+
+      <div class="header-meta ra-header-meta">
+        <span class="status-chip status-live ra-badge ra-badge--success">
+          Live Optimization
+        </span>
+        <span class="status-chip ra-badge">Model v1.0</span>
+      </div>
+    </header>
+
+    <!-- KPI -->
+    <section class="kpi-strip ra-kpi-strip">
+      <article class="kpi-card ra-card">
+        <div class="kpi-label ra-label">Injection Efficiency</div>
+        <div class="kpi-value ra-metric">{{ kpiEfficiency }}%</div>
+      </article>
+
+      <article class="kpi-card ra-card">
+        <div class="kpi-label ra-label">Predicted Oil Uplift</div>
+        <div class="kpi-value ra-metric">+{{ kpiYield }} bopd</div>
+      </article>
+
+      <article class="kpi-card ra-card">
+        <div class="kpi-label ra-label">Overpressure Risk</div>
+        <div class="kpi-value ra-metric">{{ kpiRisk }}%</div>
+      </article>
+
+      <article class="kpi-card ra-card">
+        <div class="kpi-label ra-label">Energy per Injected Barrel</div>
+        <div class="kpi-value ra-metric">{{ kpiEnergy }} kWh/bbl</div>
+      </article>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section class="dashboard-grid ra-dashboard-grid">
+
+      <article *ngFor="let param of state" class="param-row ra-grid-row">
+
+        <!-- LEFT -->
+        <div class="gauge-panel ra-card">
+
+          <div class="panel-header">
+            <h2 class="param-name">{{ param.name }}</h2>
+            <span class="last-refresh">
+              Last refreshed {{ param.lastUpdated }}
+            </span>
+          </div>
+
+          <div class="gauge-track">
+            <div class="range low"></div>
+            <div class="range optimal"></div>
+            <div class="range high"></div>
+
+            <div class="needle"
+                 [style.left.%]="((param.current - param.min)/(param.max-param.min))*100">
+            </div>
+          </div>
+
+          <div class="tick-row">
+            <span *ngFor="let t of param.ticks">{{ t }}</span>
+          </div>
+
+          <div class="gauge-values">
+            <span class="actual-label">
+              {{ param.current | number:'1.0-2' }}
+            </span>
+            <span class="units-label">
+              Actual {{ param.unit }}
+            </span>
+          </div>
+
+        </div>
+
+        <!-- RIGHT -->
+        <div class="recommendation-panel ra-card">
+
+          <div class="rec-head">
+            <h3 class="rec-title">
+              Setpoint Recommendation: {{ param.name }}
+            </h3>
+
+            <span class="constraint-badge"
+                  [ngClass]="param.constraintClass">
+              {{ param.constraintLabel }}
+            </span>
+          </div>
+
+          <div class="rec-values">
+            <div>
+              <div class="metric-label">Injection Setpoint Lower</div>
+              <div class="metric">
+                {{ param.recommendedLower | number:'1.0-2' }}
+              </div>
+            </div>
+
+            <div>
+              <div class="metric-label">Injection Setpoint Upper</div>
+              <div class="metric">
+                {{ param.recommendedUpper | number:'1.0-2' }}
+              </div>
+            </div>
+          </div>
+
+          <!-- DELTA (FIXED) -->
+          <div class="delta-row">
+            <span class="delta-label">Delta to target</span>
+            <span class="delta-value" [ngClass]="param.deltaClass">
+              {{ param.deltaText }}
+            </span>
+          </div>
+
+          <!-- CONFIDENCE -->
+          <div class="confidence-wrap">
+            <div class="confidence-head">
+              <span>Confidence Score</span>
+              <span class="confidence-score">
+                {{ param.confidence }}%
+              </span>
+            </div>
+
+            <div class="confidence-bar ra-progress-track">
+              <div class="confidence-fill ra-progress-fill"
+                   [style.width.%]="param.confidence">
+              </div>
+            </div>
+          </div>
+
+          <!-- SPARKLINE -->
+          <div class="sparkline-wrap">
+            <div class="sparkline-head">
+              <span>Actual Response Trend</span>
+              <span class="trend-tag"
+                    [ngClass]="param.trendClass">
+                {{ param.trendLabel }}
+              </span>
+            </div>
+
+            <svg class="sparkline" viewBox="0 0 280 72">
+              <path class="sparkline-band" [attr.d]="param.bandPath"></path>
+              <path class="sparkline-line" [attr.d]="param.linePath"></path>
+            </svg>
+          </div>
+
+        </div>
+
+      </article>
+
+    </section>
+
   </main>
 </div>
- 
