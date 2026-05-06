@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
 
   constructor(private sanitizer: DomSanitizer) {
     this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-      'assets/OGDemoRecom/index.html'
+      'https://dmpc.demo.rockwellautomation.com/gateway/plugin/project-398/water-injection-optimizaton/api/assets/OGDemoRecom/index.html'
     );
   }
   state: any[] = [];
