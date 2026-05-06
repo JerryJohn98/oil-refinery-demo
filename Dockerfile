@@ -9,7 +9,7 @@ ENV PIP_EXTRA_INDEX_URL $PIP_EXTRA_INDEX_VALUE
 ENV PIP_TRUSTED_HOST $PIP_TRUSTED_HOST_VALUE
 
 # Install Node.js to provide a JavaScript runtime
-RUN apt-get update && apt-get install -y nodejs npm
+RUN apt-get update
 
 WORKDIR /app
 
