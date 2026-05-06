@@ -1,6 +1,112 @@
-<iframe
-  [src]="safeUrl"
-  width="100%"
-  height="600px"
-  style="border:none;">
-</iframe>
+<div class="app-shell">
+<main class="main-content">
+ 
+    <!-- HEADER -->
+<header class="header">
+<div>
+<h1>Water Injection Optimizer</h1>
+<p>Control view for pressure and rate setpoint recommendations</p>
+</div>
+<div class="header-badges">
+<span class="badge live">Live Optimization</span>
+<span class="badge">Model v1.0</span>
+</div>
+</header>
+ 
+    <!-- KPI -->
+<section class="kpi-row">
+<div class="kpi">{{ kpiEfficiency }}%</div>
+<div class="kpi">+{{ kpiYield }} bopd</div>
+<div class="kpi">{{ kpiRisk }}%</div>
+<div class="kpi">{{ kpiEnergy }} kWh/bbl</div>
+</section>
+ 
+    <!-- MAIN CARDS -->
+<div class="cards">
+ 
+      <div class="row" *ngFor="let param of state">
+ 
+        <!-- LEFT CARD -->
+<div class="card gauge">
+ 
+          <div class="card-header">
+<span>{{ param.name }}</span>
+<span class="time">Last refreshed {{ param.lastUpdated }}</span>
+</div>
+ 
+          <!-- Gauge -->
+<div class="gauge-bar" style="position:relative;">
+<div class="low"></div>
+<div class="optimal"></div>
+<div class="high"></div>
+<div class="needle"
+
+                 [style.left.%]="((param.current - param.min)/(param.max-param.min))*100">
+</div>
+</div>
+ 
+          <div class="ticks">
+<span *ngFor="let t of param.ticks">{{ t }}</span>
+</div>
+ 
+          <div class="value">
+
+            {{ param.current | number:'1.0-2' }}
+<span>Actual {{ param.unit }}</span>
+</div>
+ 
+        </div>
+ 
+        <!-- RIGHT CARD -->
+<div class="card recommendation">
+ 
+          <div class="rec-header">
+<h3>Setpoint Recommendation: {{ param.name }}</h3>
+<span class="badge success">Within constraints</span>
+</div>
+ 
+          <div class="rec-values">
+<div>
+<label>Lower</label>
+<h2>{{ param.recommendedLower | number:'1.0-2' }}</h2>
+</div>
+<div>
+<label>Upper</label>
+<h2>{{ param.recommendedUpper | number:'1.0-2' }}</h2>
+</div>
+</div>
+ 
+          <div class="delta">
+<span>Delta to target</span>
+<span>
+
+              {{ ((param.recommendedLower+param.recommendedUpper)/2 - param.current) | number:'1.0-2' }}
+</span>
+</div>
+ 
+          <!-- Confidence -->
+<div class="confidence">
+<div class="row-head">
+<span>Confidence Score</span>
+<span>{{ param.confidence }}%</span>
+</div>
+<div class="bar">
+<div class="fill" [style.width.%]="param.confidence"></div>
+</div>
+</div>
+ 
+          <!-- Sparkline -->
+<svg viewBox="0 0 280 72">
+<path class="band" [attr.d]="param.bandPath"></path>
+<path class="line" [attr.d]="param.linePath"></path>
+</svg>
+ 
+        </div>
+ 
+      </div>
+ 
+    </div>
+ 
+  </main>
+</div>
+ 

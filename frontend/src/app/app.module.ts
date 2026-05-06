@@ -24,8 +24,7 @@ import { DatePipe } from '@angular/common';
     HttpClientModule,
   ],
   exports: [OwlDateTimeModule, OwlNativeDateTimeModule],
-  providers: [DatePipe],
-  bootstrap: [AppComponent],
+  providers: [DatePipe]
 })
 export class AppModule {
   constructor(public injector: Injector) {
