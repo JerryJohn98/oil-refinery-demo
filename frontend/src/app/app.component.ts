@@ -1,16 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
+ 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  safeUrl: SafeResourceUrl;
 
+  constructor(private sanitizer: DomSanitizer) {
+    this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+      'assets/OGDemoRecom/index.html'
+    );
+  }
   state: any[] = [];
 
   kpiEfficiency = 0;
-  kpiUplift = 0;
+  kpiYield = 0;
   kpiRisk = 0;
   kpiEnergy = 0;
 
@@ -93,6 +101,18 @@ export class AppComponent implements OnInit {
     }
 
     return ticks;
+  }
+
+  getTrendStatus(trend: number[]): string {
+    if (trend.length < 2) return 'stable';
+    const recent = trend.slice(-3);
+    const older = trend.slice(-6, -3);
+    const recentAvg = recent.reduce((a, b) => a + b) / recent.length;
+    const olderAvg = older.length > 0 ? older.reduce((a, b) => a + b) / older.length : recentAvg;
+    const diff = recentAvg - olderAvg;
+    
+    if (Math.abs(diff) < (Math.abs(olderAvg) * 0.01)) return 'stable';
+    return diff > 0 ? 'up' : 'down';
   }
 
   toScaledPoints(values: number[], width: number, height: number, min: number, max: number) {
@@ -184,6 +204,7 @@ export class AppComponent implements OnInit {
       param.bandPath = this.pointsToBand(upperPoints, lowerPoints);
 
       param.lastUpdated = new Date().toLocaleTimeString();
+      param.trendStatus = this.getTrendStatus(param.trend);
     });
 
     this.updateKpis();
@@ -194,8 +215,8 @@ export class AppComponent implements OnInit {
       this.state.reduce((sum, p) => sum + p.confidence, 0) / this.state.length;
 
     this.kpiEfficiency = Math.round(70 + avgConfidence * 0.3);
-    this.kpiUplift = Math.round(avgConfidence * 2);
+    this.kpiYield = Math.round(111 + avgConfidence * 0.5);
     this.kpiRisk = Math.round(100 - avgConfidence);
-    this.kpiEnergy = +(Math.random() * 1).toFixed(2);
+    this.kpiEnergy = +(0.92 - Math.random() * 0.1).toFixed(2);
   }
 }

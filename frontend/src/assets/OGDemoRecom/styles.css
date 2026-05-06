@@ -62,7 +62,6 @@ h3 {
 .page-header p {
   margin: 4px 0 0;
   color: var(--text-muted);
-  font-size: 0.9rem;
 }
 
 .dashboard-grid {
@@ -82,68 +81,53 @@ h3 {
   background: linear-gradient(160deg, #ffffff, #eef6ef);
   border: 1px solid var(--line);
   border-radius: 10px;
-  padding: 14px;
-  transition: all 280ms ease;
-}
-
-.kpi-card:hover {
-  border-color: #b7e4c7;
-  box-shadow: 0 4px 12px rgba(79, 159, 74, 0.12);
+  padding: 10px;
 }
 
 .kpi-label {
   color: var(--text-muted);
   font-size: 0.82rem;
-  font-weight: 500;
 }
 
 .kpi-value {
-  margin-top: 6px;
+  margin-top: 4px;
   font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.45rem;
   font-weight: 700;
-  color: var(--text-main);
 }
 
-/* PARAM ROW: 3-column layout */
 .param-row {
   display: grid;
-  grid-template-columns: 1fr 1fr 1.2fr;
-  gap: 12px;
+  grid-template-columns: 2fr 1fr;
+  gap: 10px;
   animation: rise 500ms ease both;
 }
 
-/* PANELS */
 .gauge-panel,
-.metrics-panel,
 .recommendation-panel {
   background: var(--bg-panel);
   border: 1px solid var(--line);
   border-radius: 10px;
-  padding: 12px;
+  padding: 10px;
 }
 
 .panel-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
 }
 
 .param-name {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--text-main);
+  font-size: 1.05rem;
 }
 
 .last-refresh {
   color: var(--text-muted);
-  font-size: 0.8rem;
+  font-size: 0.86rem;
 }
 
-/* GAUGE TRACK */
 .gauge-track {
-  margin-top: 8px;
+  margin-top: 10px;
   height: 40px;
   border: 1px solid #e5e7eb;
   border-radius: 6px;
@@ -190,96 +174,22 @@ h3 {
 }
 
 .actual-label {
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 700;
-  color: var(--text-main);
 }
 
 .units-label {
   color: #344054;
-  font-size: 0.9rem;
 }
 
-/* METRICS PANEL */
-.metrics-panel {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.metrics-content {
-  display: grid;
-  gap: 12px;
-}
-
-.metric-group {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 8px;
-}
-
-.metric-box {
-  padding: 8px;
-  background: #f9fafb;
-  border: 1px solid #e5e7eb;
-  border-radius: 6px;
-}
-
-.metric-label {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  font-weight: 500;
-  margin-bottom: 4px;
-  display: block;
-}
-
-.metric-value {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--text-main);
-  line-height: 1;
-}
-
-.delta-section {
-  border-top: 2px solid #e5e7eb;
-  padding-top: 10px;
-}
-
-.delta-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.delta-label {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  font-weight: 500;
-}
-
-.delta-value {
-  font-size: 1.1rem;
-  font-weight: 700;
-  font-family: "IBM Plex Mono", monospace;
-}
-
-.delta-positive {
-  color: #067647;
-}
-
-.delta-negative {
-  color: #b42318;
-}
-
-.delta-neutral {
-  color: #475467;
-}
-
-/* RECOMMENDATION PANEL */
 .recommendation-panel {
   display: grid;
-  grid-template-rows: auto auto 1fr;
+  grid-template-rows: auto auto auto 1fr;
   gap: 10px;
+}
+
+.rec-title {
+  font-size: 1rem;
 }
 
 .rec-head {
@@ -287,22 +197,14 @@ h3 {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.rec-title {
-  font-size: 0.95rem;
-  font-weight: 600;
 }
 
 .constraint-badge {
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   border-radius: 999px;
-  padding: 4px 10px;
+  padding: 3px 8px;
   border: 1px solid transparent;
   white-space: nowrap;
-  font-weight: 500;
 }
 
 .constraint-ok {
@@ -323,28 +225,68 @@ h3 {
   background: #ffeceb;
 }
 
-/* CONFIDENCE WRAP */
-.confidence-wrap {
-  background: #fbfcfb;
-  border: 1px solid #e5e7eb;
-  border-radius: 6px;
-  padding: 8px;
+.rec-values {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
 }
 
-.confidence-head {
+.metric-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.metric {
+  font-size: 2rem;
+  line-height: 1;
+  font-weight: 600;
+}
+
+.delta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-top: 1px dashed #d0d5dd;
+  border-bottom: 1px dashed #d0d5dd;
+  padding: 6px 0;
+}
+
+.delta-label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.delta-value {
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.delta-positive {
+  color: #067647;
+}
+
+.delta-negative {
+  color: #b42318;
+}
+
+.delta-neutral {
+  color: #475467;
+}
+
+.confidence-head,
+.sparkline-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.8rem;
-  margin-bottom: 6px;
+  font-size: 0.9rem;
 }
 
 .confidence-score {
   font-weight: 700;
-  color: var(--good);
 }
 
 .confidence-bar {
+  margin-top: 4px;
   width: 100%;
   height: 10px;
   border-radius: 999px;
@@ -360,20 +302,11 @@ h3 {
   transition: width 180ms ease;
 }
 
-/* SPARKLINE WRAP */
 .sparkline-wrap {
   border: 1px solid #eaecf0;
   border-radius: 8px;
-  padding: 8px;
+  padding: 6px;
   background: #fbfcfb;
-}
-
-.sparkline-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.8rem;
-  margin-bottom: 6px;
 }
 
 .sparkline {
@@ -395,24 +328,19 @@ h3 {
 
 .trend-tag {
   font-weight: 600;
-  font-size: 0.75rem;
-  padding: 2px 6px;
-  border-radius: 4px;
+  font-size: 0.78rem;
 }
 
 .trend-up {
   color: #067647;
-  background: #e8f8ee;
 }
 
 .trend-down {
   color: #b42318;
-  background: #ffeceb;
 }
 
-.trend-stable {
+.trend-flat {
   color: #ca8a04;
-  background: #fff4e5;
 }
 
 @keyframes rise {
@@ -426,12 +354,6 @@ h3 {
   }
 }
 
-@media (max-width: 1300px) {
-  .param-row {
-    grid-template-columns: 1.2fr 1fr 1fr;
-  }
-}
-
 @media (max-width: 1120px) {
   .kpi-strip {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -439,12 +361,6 @@ h3 {
 
   .param-row {
     grid-template-columns: 1fr;
-  }
-
-  .gauge-panel,
-  .metrics-panel,
-  .recommendation-panel {
-    min-height: auto;
   }
 }
 
@@ -464,19 +380,11 @@ h3 {
     grid-template-columns: 1fr;
   }
 
-  .param-row {
+  .rec-values {
     grid-template-columns: 1fr;
   }
 
-  .metric-group {
-    grid-template-columns: 1fr;
-  }
-
-  .metric-value {
-    font-size: 1.4rem;
-  }
-
-  .actual-label {
-    font-size: 1.1rem;
+  .metric {
+    font-size: 1.7rem;
   }
 }
