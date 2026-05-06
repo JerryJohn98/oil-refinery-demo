@@ -66,11 +66,11 @@ class Logging:
     level = config.get("LOGGING", "level", fallback="INFO")
     level = level or "INFO"
     print(f"Logging Level set to: {level}")
-    ENABLE_FILE_LOG = config.getboolean("LOGGING", "ENABLE_FILE_LOG", fallback=False)
-    ENABLE_CONSOLE_LOG = config.getboolean(
+    ENABLE_FILE_LOG = config.get("LOGGING", "ENABLE_FILE_LOG", fallback=False)
+    ENABLE_CONSOLE_LOG = config.get(
         "LOGGING", "ENABLE_CONSOLE_LOG", fallback=True
     )
-    LOG_ENABLE_TRACEBACK = config.getboolean(
+    LOG_ENABLE_TRACEBACK = config.get(
         "SERVICE", "enable_traceback", fallback=False
     )
 
